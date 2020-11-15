@@ -21,7 +21,7 @@ public class GreetingController {
                                              @RequestParam(value = "pass",defaultValue = "")String pas){
         com.prueba.demo.Autenticacion autenticacion = new com.prueba.demo.Autenticacion();
         return new com.prueba.demo.Greeting(String.format(autenticacion.Atenticar(user,pas)));
-    }
+    }//asd
 
     @GetMapping(value="/product")
     public List<Products> getProduct(){
