@@ -1,33 +1,34 @@
 package CRUD;
 
+import com.prueba.demo.Products;
 import utils.Consultas;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Leer {
     Consultas consultas = new Consultas();
 
-    public ArrayList ConsultarProductos(){
-        ArrayList<String> arrayList = null;
+    public List ConsultarProductos(){
+        List<Products> arrayList = new ArrayList<>();
         String Query="call TodosProductos();";
         ResultSet resultSet=consultas.Conexion(Query);
         if (resultSet!=null)
         {
             try{
                 while (resultSet.next()){
-                    arrayList.add(
-                            resultSet.getString("IdProducto")+"#"+
-                                    resultSet.getString("Nombre")+"#"+
-                                    resultSet.getString("Cantidad")+"#"+
-                                    resultSet.getString("PrecioCompra")+"#"+
-                                    resultSet.getString("PrecioVenta")
-                    );
+                    Products products = new Products();
+                    products.setId(resultSet.getInt("IdProducto"));
+                            products.setNombre(resultSet.getString("Nombre"));
+                            products.setCantidad(resultSet.getInt("Cantidad"));
+                            products.setPrecioC(resultSet.getDouble("PrecioCompra"));
+                            products.setPrecioV(resultSet.getDouble("PrecioVenta"));
+                            arrayList.add(products);
                 }
                 consultas.cerrarConexion();
             }catch (Exception e){
                 e.printStackTrace();
-                consultas.cerrarConexion();
             }
         }
         return arrayList;
