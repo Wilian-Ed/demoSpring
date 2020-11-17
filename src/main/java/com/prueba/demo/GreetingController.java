@@ -42,7 +42,7 @@ public class GreetingController {
             @RequestParam(value = "nombre",defaultValue = "")String nombre,
             @RequestParam(value = "cantidad",defaultValue = "")int cantidad,
             @RequestParam(value = "precio",defaultValue = "")double precio
-    ) {
+    ) {//a
         Crear crear = new Crear();
         crear.NuevoProducto(nombre,cantidad,precio,0);
         return "Hecho";
