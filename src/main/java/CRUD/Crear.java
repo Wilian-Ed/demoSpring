@@ -34,5 +34,8 @@ public class Crear {
         return Nuevo("call ProductoNuevo('"+nombre+"',"+cantidad+","+precioCompra+","+precioVenta+");");
     }
 
+    public void InsertarCompra(int id){
+        Nuevo("call Comprar("+id+");");
+    }
     
 }

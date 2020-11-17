@@ -1,5 +1,6 @@
 package com.prueba.demo;
 
+import CRUD.Crear;
 import CRUD.Leer;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,5 +28,23 @@ public class GreetingController {
     public List<Products> getProduct(){
         Leer leer = new Leer();
         return leer.ConsultarProductos();
+    }
+
+    @GetMapping("/compra")
+    public Greeting greeting(@RequestParam(value = "id",defaultValue = "")int id){
+        Crear crear = new Crear();
+        crear.InsertarCompra(id);
+        return new Greeting("Hecho");
+    }
+
+    @GetMapping("/nuevo_product")
+    public String setProduct(
+            @RequestParam(value = "nombre",defaultValue = "")String nombre,
+            @RequestParam(value = "cantidad",defaultValue = "")int cantidad,
+            @RequestParam(value = "precio",defaultValue = "")double precio
+    ) {
+        Crear crear = new Crear();
+        crear.NuevoProducto(nombre,cantidad,precio,0);
+        return "Hecho";
     }
 }
