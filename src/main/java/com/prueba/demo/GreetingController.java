@@ -66,6 +66,4 @@ public class GreetingController {
         crear.NuevoProducto(nombre,cantidad,precio,0);
         return "Hecho";
     }
-
-
 }

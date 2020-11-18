@@ -1,6 +1,7 @@
 package CRUD;
 
 import com.prueba.demo.Products;
+import com.prueba.demo.Vent;
 import utils.Consultas;
 
 import java.sql.ResultSet;
@@ -35,18 +36,18 @@ public class Leer {
     }
 
     public List ConsultarComprasGlobales(){
-        List<Products> arrayList = new ArrayList<>();
+        List<Vent> arrayList = new ArrayList<>();
         String Query="call ventasGlobales();";
         ResultSet resultSet=consultas.Conexion(Query);
         if (resultSet!=null)
         {
             try{
                 while (resultSet.next()){
-                    Products products = new Products();
+                    Vent products = new Vent();
                     products.setId(resultSet.getInt("IdCompra"));
                     products.setNombre(resultSet.getString("Nombre"));
                     products.setPrecioC(resultSet.getDouble("PrecioCompra"));
-                    products.setPrecioV(resultSet.getInt("Cantidad"));
+                    products.setCantidad(resultSet.getInt("Cantidad"));
                     arrayList.add(products);
                 }
                 consultas.cerrarConexion();
@@ -64,18 +65,18 @@ public class Leer {
     }
 
     public List ConsultarCompraProducto(){
-        List<Products> arrayList = new ArrayList<>();
+        List<Vent> arrayList = new ArrayList<>();
         String Query="call ventaProducto();";
         ResultSet resultSet=consultas.Conexion(Query);
         if (resultSet!=null)
         {
             try{
                 while (resultSet.next()){
-                    Products products = new Products();
+                    Vent products = new Vent();
                     products.setId(resultSet.getInt("IdCompra"));
                     products.setNombre(resultSet.getString("Nombre"));
                     products.setPrecioC(resultSet.getDouble("PrecioCompra"));
-                    products.setPrecioV(resultSet.getInt("Cantidad"));
+                    products.setCantidad(resultSet.getInt("Cantidad"));
                     arrayList.add(products);
                 }
                 consultas.cerrarConexion();
