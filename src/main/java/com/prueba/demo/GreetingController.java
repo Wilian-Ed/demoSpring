@@ -30,6 +30,25 @@ public class GreetingController {
         return leer.ConsultarProductos();
     }
 
+    @GetMapping(value="/vent-glob")
+    public List<Products> getVentGlob(){
+        Leer leer = new Leer();
+        return leer.ConsultarComprasGlobales();
+    }
+
+    @GetMapping(value="/vent-prod")
+    public List<Products> getVentProduct(){
+        Leer leer = new Leer();
+        return leer.ConsultarCompraProducto();
+    }
+
+    @GetMapping(value="/prom")
+    public Double getPromProduct(){
+        Leer leer = new Leer();
+        return leer.ConsultarPromedioProduct();
+    }
+
+
     @GetMapping("/compra")
     public Greeting greeting(@RequestParam(value = "id",defaultValue = "")int id){
         Crear crear = new Crear();
@@ -47,4 +66,6 @@ public class GreetingController {
         crear.NuevoProducto(nombre,cantidad,precio,0);
         return "Hecho";
     }
+
+
 }

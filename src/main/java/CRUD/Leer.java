@@ -34,6 +34,58 @@ public class Leer {
         return arrayList;
     }
 
+    public List ConsultarComprasGlobales(){
+        List<Products> arrayList = new ArrayList<>();
+        String Query="call ventasGlobales();";
+        ResultSet resultSet=consultas.Conexion(Query);
+        if (resultSet!=null)
+        {
+            try{
+                while (resultSet.next()){
+                    Products products = new Products();
+                    products.setId(resultSet.getInt("IdCompra"));
+                    products.setNombre(resultSet.getString("Nombre"));
+                    products.setPrecioC(resultSet.getDouble("PrecioCompra"));
+                    products.setPrecioV(resultSet.getInt("Cantidad"));
+                    arrayList.add(products);
+                }
+                consultas.cerrarConexion();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return arrayList;
+    }
+
+    public double ConsultarPromedioProduct(){
+        Crear crear = new Crear();
+        String text=crear.Nuevo("promedio()");
+        return Double.parseDouble(text);
+    }
+
+    public List ConsultarCompraProducto(){
+        List<Products> arrayList = new ArrayList<>();
+        String Query="call ventaProducto();";
+        ResultSet resultSet=consultas.Conexion(Query);
+        if (resultSet!=null)
+        {
+            try{
+                while (resultSet.next()){
+                    Products products = new Products();
+                    products.setId(resultSet.getInt("IdCompra"));
+                    products.setNombre(resultSet.getString("Nombre"));
+                    products.setPrecioC(resultSet.getDouble("PrecioCompra"));
+                    products.setPrecioV(resultSet.getInt("Cantidad"));
+                    arrayList.add(products);
+                }
+                consultas.cerrarConexion();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return arrayList;
+    }
+
     public ArrayList ConsultarVentas(){
         ArrayList<String> arrayList = null;
         String Query="call ConsVentas();";
