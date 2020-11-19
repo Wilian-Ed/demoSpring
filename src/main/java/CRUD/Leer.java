@@ -60,7 +60,7 @@ public class Leer {
 
     public String ConsultarPromedioProduct(){
         Crear crear = new Crear();
-        String text=crear.Nuevo("promedio()");
+        String text=crear.Nuevo("call promedio()");
         return text;
     }
 
