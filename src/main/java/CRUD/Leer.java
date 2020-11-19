@@ -58,10 +58,10 @@ public class Leer {
         return arrayList;
     }
 
-    public double ConsultarPromedioProduct(){
+    public String ConsultarPromedioProduct(){
         Crear crear = new Crear();
         String text=crear.Nuevo("promedio()");
-        return Double.parseDouble(text);
+        return text;
     }
 
     public List ConsultarCompraProducto(){

@@ -43,7 +43,7 @@ public class GreetingController {
     }
 
     @GetMapping(value="/prom")
-    public Double getPromProduct(){
+    public String getPromProduct(){
         Leer leer = new Leer();
         return leer.ConsultarPromedioProduct();
     }
